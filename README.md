@@ -5,5 +5,5 @@ This project aims to find Donation Analytics in python.
 ## Instructions for running the code
 ### Data
 ```sh
-$ ./runstuff
+$ ./runmorestuff
 ```
