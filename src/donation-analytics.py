@@ -34,6 +34,10 @@ dataset=pd.read_csv(ITCONTFILE,header=None,sep='|',names=["CMTE_ID","AMNDT_IND",
 # Subset the dataset based on relevant column name
 inputdata = dataset[['CMTE_ID','NAME','ZIP_CODE','TRANSACTION_DT','TRANSACTION_AMT','OTHER_ID']]
 
+with open(PERCENTILEFILE) as f:
+    c=f.readlines()
+PERCENTILE = float(c[0])/100;
+
 
 ###PREPPROCESSING 
 #Make ZIP_CODE 5 characters
@@ -69,7 +73,7 @@ MERGE_REPEATDON_INPUTDATA=MERGE_REPEATDON_INPUTDATA.drop(columns=['NAME'])
 #HARDCODE#
 INPUT_YEAR=2018
 INPUT_CMTE_ID='C00384516'
-PERCENTILE=0.3
+
 
 FINAL=MERGE_REPEATDON_INPUTDATA.loc[(MERGE_REPEATDON_INPUTDATA.CMTE_ID==INPUT_CMTE_ID) & (MERGE_REPEATDON_INPUTDATA.TRANSACTION_DT==INPUT_YEAR)]
 #Sort by Transanction amount
