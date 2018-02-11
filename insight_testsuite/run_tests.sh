@@ -99,3 +99,5 @@ function run_all_tests {
 
 check_project_struct
 run_all_tests
+echo -e "[${color_green}UNIT TEST#1: Comparing Speed & Accuracy: Naive-Nearest-Rank-Percentile-Method vs. Dual-Heap-Nearest-Rank-Percentile-Method Implementations for 10 Random Seeds${color_norm}]"
+python ./unit_tests/fast_percentile.py
