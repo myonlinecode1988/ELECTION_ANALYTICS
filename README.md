@@ -109,4 +109,6 @@ All output donation values have been rounded to `int`.
 The nearest-rank-method is NOT defined for Percentile=0. Please use Percentile
  between (0,100] 
 
-
+Although the fast-percentile-algorithm was exhaustively tested with 1000s of random 
+data and has been shown as part of my tests; I should have used `unittest` module for 
+more formal testing.
