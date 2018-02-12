@@ -109,13 +109,13 @@ We use two dictionaries and a Percentile object which comprises of two
 
 ##### Dictionaries
 The first dictionary (referred to as `Dictionary#1` above and
-`NAME_ZIP_to_YEAR_COUNT` in code) uses (NAME,ZIP_CODE) as key and stores
-[YEAR,count] as its values.
+`NAME_ZIP_to_YEAR_COUNT` in code) uses `(NAME,ZIP_CODE)` as key and stores
+`[YEAR,count]` as its values.
  
 The second dictionary (referred to as `RepeatDonorDictionary` and
-`REPEAT_DONOR_DICT` in code ) uses (CMTE_ID,ZIP_CODE) as key nd stores
-[CMTE_ID,ZIP_CODE,TRANSACTION_DT,Percentile-Object,Percentile,Running
-Count,Running Total Amount] as its values.  Dictionary is a good data structure
+`REPEAT_DONOR_DICT` in code ) uses `(CMTE_ID,ZIP_CODE)` as key nd stores
+`[CMTE_ID,ZIP_CODE,TRANSACTION_DT,Percentile-Object,Percentile,Running
+Count,Running Total Amount]` as its values.  Dictionary is a good data structure
 to use because key search is of O(1) complexity.
 
 #####  Percentile Object
