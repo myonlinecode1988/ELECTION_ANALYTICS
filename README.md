@@ -47,7 +47,8 @@ To run the tests follow these steps:
     insight_testsuite~$ ./run_tests.sh
 ```
 The output should look similar to this:
-````
+
+```
 [PASS]: test_1 repeat_donors.txt
 [PASS]: test_2 repeat_donors.txt
 [PASS]: test_3 repeat_donors.txt
@@ -64,7 +65,7 @@ SUCESS:Percentile Match. Dual-Heap-Percentile implementation is 3.1 times faster
 SUCESS:Percentile Match. Dual-Heap-Percentile implementation is 3.05 times faster than naive implementation
 SUCESS:Percentile Match. Dual-Heap-Percentile implementation is 3.12 times faster than naive implementation
 SUCESS:Percentile Match. Dual-Heap-Percentile implementation is 3.19 times faster than naive implementation
-````
+```
 #### Description of tests:
 - **test_1**: This is the default test provided to us.
 - **test_2**: This test has been provided to evaluate correct results for CMTE_ID=C00640623 & ZIP_CODE=35043.
@@ -75,7 +76,7 @@ SUCESS:Percentile Match. Dual-Heap-Percentile implementation is 3.19 times faste
 
 ### Algorithm and Data Structure
 
-
+```
                          Read rows, check input data sanity
                                         |
                     Use  (NAME, ZIP_CODE) as a key in Hashtable#1
@@ -96,6 +97,7 @@ SUCESS:Percentile Match. Dual-Heap-Percentile implementation is 3.19 times faste
           Create entry in RepeatDonorHastable with                                        Update entry in  RepeatDonorHastable with
     	(CMTE_ID,ZIP_CODE):[update Percentile object,       				(CMTE_ID,ZIP_CODE):[update Percentile object,
 find new percentile and update running donation total and counts]		find new percentile and update running donation total and counts]
+```
 
 ####  Percentile Object
 We create two heaps `MinHeap` and `MaxHeap`. Let's say we are evaluating for 30
