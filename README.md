@@ -5,20 +5,20 @@
 1. [Introduction](README.md#introduction)
 2. [Run instructions](README.md#run-instructions)
 3. [Testing](README.md#testing)
-4. [Algorithm and Data Structure](README.md#algorithm-and-data-structure)
-5. [Code Dependencies and Comments](README.md#code-dependencies-and-comments)
+4. [Algorithm & Data Structure](README.md#algorithm-&-data-structure)
+5. [Code Dependencies & Comments](README.md#code-dependencies-&-comments)
 
 
 ### Introduction
 The aim of the project is to process a stream data of campaign contributions,
-identify repeat donors and report total dollars received, the total number of
-contributions received and donation amount in a given percentile.
+identify repeat donors & report total dollars received, the total number of
+contributions received & donation amount in a given percentile.
 
-Big data processing requires close attention to runtime and how data is stored
-and processed. Although a naive implementation of
+Big data processing requires close attention to runtime & how data is stored
+& processed. Although a naive implementation of
 [percentile](https://en.wikipedia.org/wiki/Percentile) is fairly easy to
 implement; **a special algorithm for percentile (using two Heap Queues)** was
-developed for calculating fast percentiles and is the main highlight of my
+developed for calculating fast percentiles & is the main highlight of my
 implementation.
 
 The program can process a 1.2G `itcont.txt` file in about 2.5 min on an
@@ -41,7 +41,7 @@ show below:
 python ./src/donation-analytics.py ./<YOUR-PATH>/itcont.txt ./<YOUR-PATH>/percentile.txt ./output/repeat_donors.txt
 ```
 ### Testing
-We have included a 4 new tests highlighting accuracy and speed of our code and algorithm.
+We have included a 4 new tests highlighting accuracy & speed of our code & algorithm.
 To run the tests follow these steps:
 ```
     $ cd insight_testsuite/
@@ -72,11 +72,11 @@ SUCESS:Percentile Match. Dual-Heap-Percentile implementation is 3.19 times faste
 - **test_1**: This is the default test provided to us.
 - **test_2**: This test has been provided to evaluate correct results for CMTE_ID=C00640623 & ZIP_CODE=35043.
 - **test_3**: This test has been provided to take care of out-of-order streams as explained in the FAQ section.
-- **test_4**: This test has been provided to highlight how the code checks and skips malformed data.
+- **test_4**: This test has been provided to highlight how the code checks & skips malformed data.
 - **UNIT TEST#1**: This a test that highlights the accuracy/performance of **Dual Heap Percentile Implementation** vs. **Naive Percentile Implementation**.
 
 
-### Algorithm and Data Structure
+### Algorithm & Data Structure
 
 #### Algorithm
 ```
@@ -104,34 +104,34 @@ SUCESS:Percentile Match. Dual-Heap-Percentile implementation is 3.19 times faste
 find new percentile and update running donation total and counts]    find new percentile and update running donation total and counts]
 ```
 #### Data Structure
-We use two dictionaries and a Percentile object which comprises of two 
+We use two dictionaries & a Percentile object which comprises of two 
 [heap data strucures](https://en.wikipedia.org/wiki/Heap_(data_structure)).
 
 ##### Dictionaries
-The first dictionary (referred to as `Dictionary#1` above and
-`NAME_ZIP_to_YEAR_COUNT` in code) uses `(NAME,ZIP_CODE)` as key and stores
+The first dictionary (referred to as `Dictionary#1` above &
+`NAME_ZIP_to_YEAR_COUNT` in code) uses `(NAME,ZIP_CODE)` as key & stores
 `[YEAR,count]` as its values.
  
-The second dictionary (referred to as `RepeatDonorDictionary` and
-`REPEAT_DONOR_DICT` in code ) uses `(CMTE_ID,ZIP_CODE)` as key nd stores
+The second dictionary (referred to as `RepeatDonorDictionary` above &
+`REPEAT_DONOR_DICT` in code ) uses `(CMTE_ID,ZIP_CODE)` as key & stores
 `[CMTE_ID,ZIP_CODE,TRANSACTION_DT,Percentile-Object,Percentile,Running
 Count,Running Total Amount]` as its values.  Dictionary is a good data structure
 to use because key search is of O(1) complexity.
 
 #####  Percentile Object
-We create two heaps `MinHeap` and `MaxHeap`. Let's say we are evaluating for 30
+We create two heaps `MinHeap` & `MaxHeap`. Let's say we are evaluating for 30
 percentile.  `MaxHeap` would contain elements smaller than or equal to 30
 percentile value.  `MinHeap` would contain all the elements greater than 30
 percentile value.  Now we insert values according to the size of the heap for
 that iteration.
 
 It takes good advantage of ordered data required for percentile calculation.
-The fact that heap has O(1) complexity to `find-min-value` operation and O(log
+The fact that heap has O(1) complexity to `find-min-value` operation & O(log
 n) complexity for `insert` operation. `Heapq` module in python is an
 implementation of `MinHeap`. To implement `MaxHeap` I made the value of keys
 negative.
 
-## Code Dependencies and Comments
+## Code Dependencies & Comments
 - The code was tested in `Python 2.7.10`. Although I haven't tested it, I
   expect that the code should work with `Python 2.7.x`.  The code has not been
 tested for `Python 3`. The code should work with baseline python installation.
@@ -141,5 +141,5 @@ tested for `Python 3`. The code should work with baseline python installation.
 - The nearest-rank-method is NOT defined for Percentile=0. Please use
   Percentile between (0,100] 
 - Although the fast-percentile-algorithm was exhaustively tested with 1000s of
-  random data and has been shown as part of my tests; I should have used
+  random data & has been shown as part of my tests; I should have used
 `unittest` module for more formal testing.
