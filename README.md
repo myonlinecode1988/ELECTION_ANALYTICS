@@ -6,7 +6,7 @@
 2. [Run instructions](README.md#run-instructions)
 3. [Testing](README.md#testing)
 4. [Algorithm and Data Structure](README.md#algorithm-and-data-structure)
-5. [Assumptions and Comments](README.md#assumptions-and-comments)
+5. [Code Dependencies and Comments](README.md#code-dependencies-and-comments)
 
 
 ### Introduction
@@ -21,7 +21,7 @@ implement; a special algorithm (which uses two Heap Queues) was developed for
 calculating fast percentiles and is the main highlight of my implementation.
 
 The program can process a 1.2G `itcont.txt` file in about 2.5 min on an Intel(R)
-Core(TM)2 Duo CPU E8135 (year:2009) processor.
+Core(TM)2 Duo CPU E8135 (year:2009) processor. It uses about 450 MB of main memory.
 
 ### Run instructions
 Download the application from github. Follow these steps to run the application:
@@ -76,19 +76,20 @@ SUCESS:Percentile Match. Dual-Heap-Percentile implementation is 3.19 times faste
 
 ### Algorithm and Data Structure
 
+#### Algorithm
 ```
                          Read rows, check input data sanity
                                         |
-                    Use  (NAME, ZIP_CODE) as a key in Hashtable#1
+                    Use  (NAME, ZIP_CODE) as a key in Dictionary#1
                         and store donor info (YEAR, COUNT)
                                         |
                     Reset repeat donor info to current donor entry
                         if out-of-order calendar year appears
                                         |
-                    Is (NAME,ZIP_CODE) key present in Hashtable#1 ?
+                    Is (NAME,ZIP_CODE) key present in Dictionary#1 ?
                                         |
             |----------------------------------------------------------------|
-    Create a new entry in Hashtable#1                            Update count in Hashtable#1
+    Create a new entry in Dictionary#1                            Update count in Dictionary#1
      (NAME,ZIP_CODE):[YEAR,count=1]                          	(NAME,ZIP_CODE):[YEAR,count+=1]
                                                                     This is a repeat donor
                                                                             |
@@ -98,6 +99,10 @@ SUCESS:Percentile Match. Dual-Heap-Percentile implementation is 3.19 times faste
     	(CMTE_ID,ZIP_CODE):[update Percentile object,       	           (CMTE_ID,ZIP_CODE):[update Percentile object,
 find new percentile and update running donation total and counts]    find new percentile and update running donation total and counts]
 ```
+#### Data Structure
+We use two dictionaries and a Percentile object which comprises of two [heap data strucures](https://en.wikipedia.org/wiki/Heap_(data_structure)).
+The first dictionary (referred to as Dictionary#1 above) uses (NAME,ZIP_CODE) as key and the second dictionary uses (CMTE_ID,ZIP_CODE) as key.
+Dictionary is a good data structure to use because key search is of O(1) complexity.
 
 ####  Percentile Object
 We create two heaps `MinHeap` and `MaxHeap`. Let's say we are evaluating for 30
@@ -106,15 +111,16 @@ percentile value.  `MinHeap` would contain all the elements greater than 30
 percentile value.  Now we insert values according to the size of the heap for
 that iteration.
 
-It takes good advantage of ordered data required for percentile calculation and
-the fact that heap has O(1) complexity to `find-min` operation and O(log n)
+It takes good advantage of ordered data required for percentile calculation.
+The fact that heap has O(1) complexity to `find-min-value` operation and O(log n)
 complexity for `insert` operation. `Heapq` module in python is an implementation
 of `MinHeap`. To implement `MaxHeap` I made the value of keys negative.
 
-## Assumptions and Comments
+## Code Dependencies and Comments
 - The code was tested in `Python 2.7.10`. Although I haven't tested it, I expect
 that the code should work with `Python 2.7.x`.  The code has not been tested
-for `Python 3`.
+for `Python 3`. The code should work with baseline python installation.
+- The code uses the following modules: `sys`, `os.path`, `heapq` & `math`
 - I have used calendar years instead of dates in the entire program.
 All output donation values have been rounded to `int`.
 - The nearest-rank-method is NOT defined for Percentile=0. Please use Percentile
