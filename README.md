@@ -24,8 +24,7 @@ The program can process a 1.2G `itcont.txt` file in about 2.5 min on an Intel(R)
 Core(TM)2 Duo CPU E8135 (year:2009) processor.
 
 ### Run instructions
-Download the application from github. You can run the application in the root
-folder by:
+Download the application from github. Follow these steps to run the application:
 ```
 $ git clone https://github.com/myonlinecode1988/ELECTION_ANALYTICS
 $ cd ELECTION_ANALYTICS
