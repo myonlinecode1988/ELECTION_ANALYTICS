@@ -95,9 +95,9 @@ percentile value.  Now we insert values according to the size of the heap for
 that iteration.
 
 It takes good advantage of ordered data required for percentile calculation and
-the fact that heap in O(1) complexity to `find-min` operation and O(log n)
+the fact that heap has O(1) complexity to `find-min` operation and O(log n)
 complexity for `insert` operation. `Heapq` module in python is an implementation
-of `MinHeap`. To implement `MaxHeap` I inverted the value of the keys.
+of `MinHeap`. To implement `MaxHeap` I made the value of keys negative.
 
 ## Assumptions and Comments
 The code was tested in `Python 2.7.10`. Although I haven't tested it, I expect
@@ -105,4 +105,5 @@ that the code should work with `Python 2.7.x`.  The code has not been tested
 for `Python 3`.
 
 I have used calendar years instead of dates in the entire program.
+All output donation values have been rounded to `int`.
 
