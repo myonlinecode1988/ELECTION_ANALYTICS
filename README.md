@@ -89,12 +89,14 @@ SUCESS:Percentile Match. Dual-Heap-Percentile implementation is 3.19 times faste
                     Is (NAME,ZIP_CODE) key present in Dictionary#1 ?
                                         |
             |----------------------------------------------------------------|
+	 (if no)							 (if yes)
     Create a new entry in Dictionary#1                            Update count in Dictionary#1
      (NAME,ZIP_CODE):[YEAR,count=1]                          	(NAME,ZIP_CODE):[YEAR,count+=1]
                                                                     This is a repeat donor
                                                                             |
                                                       Is  (CMTE_ID,ZIP_CODE) key present in RepeatDonorHastable ?
                          |----------------------------------------------------------------| 
+	              (if no)							       (if yes)
           Create entry in RepeatDonorHastable with                           Update entry in RepeatDonorHastable with
     	(CMTE_ID,ZIP_CODE):[update Percentile object,       	           (CMTE_ID,ZIP_CODE):[update Percentile object,
 find new percentile and update running donation total and counts]    find new percentile and update running donation total and counts]
