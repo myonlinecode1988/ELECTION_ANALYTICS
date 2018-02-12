@@ -5,9 +5,8 @@
 1. [Introduction](README.md#introduction)
 2. [Run instructions](README.md#run-instructions)
 3. [Testing](README.md#testing)
-4. [Example](README.md#example)
-5. [Algorithm and Data Structure](README.md#algorithm-and-data-structure)
-6. [Assumptions and Comments](README.md#assumptions-and-comments)
+4. [Algorithm and Data Structure](README.md#algorithm-and-data-structure)
+5. [Assumptions and Comments](README.md#assumptions-and-comments)
 
 
 ### Introduction
@@ -65,7 +64,7 @@ SUCESS:Percentile Match. Dual-Heap-Percentile implementation is 3.12 times faste
 SUCESS:Percentile Match. Dual-Heap-Percentile implementation is 3.19 times faster than naive implementation
 ````
 
-### Algortihm and Data Structure
+### Algorithm and Data Structure
 
                          Read rows, check input data sanity
                                         |
