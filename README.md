@@ -27,6 +27,8 @@ Core(TM)2 Duo CPU E8135 (year:2009) processor.
 Download the application from github. You can run the application in the root
 folder by:
 ```
+$ git clone https://github.com/myonlinecode1988/ELECTION_ANALYTICS
+$ cd ELECTION_ANALYTICS
 $ chmod +x run.sh
 $ ./run.sh
 ```
