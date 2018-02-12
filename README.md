@@ -17,8 +17,7 @@ contributions received and donation amount in a given percentile.
 Big data processing requires close attention to runtime and how data is stored
 and processed. Although a naive implementation of
 [percentile](https://en.wikipedia.org/wiki/Percentile) is fairly easy to
-implement; **a special algorithm for percentile (using two [Heap Queues]
-((https://en.wikipedia.org/wiki/Heap_(data_structure))))** was 
+implement; **a special algorithm for percentile (using two Heap Queues)** was 
 developed for calculating fast percentiles and is the main highlight of my implementation.
 
 The program can process a 1.2G `itcont.txt` file in about 2.5 min on an Intel(R)
