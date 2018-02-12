@@ -94,9 +94,9 @@ SUCESS:Percentile Match. Dual-Heap-Percentile implementation is 3.19 times faste
                                                                             |
                                                       Is  (CMTE_ID,ZIP_CODE) key present in RepeatDonorHastable ?
                          |----------------------------------------------------------------| 
-          Create entry in RepeatDonorHastable with                                        Update entry in  RepeatDonorHastable with
-    	(CMTE_ID,ZIP_CODE):[update Percentile object,       				(CMTE_ID,ZIP_CODE):[update Percentile object,
-find new percentile and update running donation total and counts]		find new percentile and update running donation total and counts]
+          Create entry in RepeatDonorHastable with                           Update entry in RepeatDonorHastable with
+    	(CMTE_ID,ZIP_CODE):[update Percentile object,       	           (CMTE_ID,ZIP_CODE):[update Percentile object,
+find new percentile and update running donation total and counts]    find new percentile and update running donation total and counts]
 ```
 
 ####  Percentile Object
