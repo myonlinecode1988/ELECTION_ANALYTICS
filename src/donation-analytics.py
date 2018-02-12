@@ -116,7 +116,15 @@ def main(argv):
     
     with open(PERCENTILEFILE) as f:
         c=f.readlines()
-    PERCENTILE = float(c[0]);
+        #Sanity checks for percentile value and file
+        try:
+            PERCENTILE = float(c[0]);
+        except ValueError:
+            print "ERROR:Use Correct value for percentile.txt"
+            exit(1)
+        if (not((PERCENTILE>0) and (PERCENTILE<=100))):
+            print "ERROR:Use value between (0,100] for percentile"
+            exit(1)
   
     with open(ITCONTFILE) as f:
         REPEAT_DONOR_DICT={} ## REPEAT DONOR dictionary

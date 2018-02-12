@@ -106,3 +106,6 @@ for `Python 3`.
 I have used calendar years instead of dates in the entire program.
 All output donation values have been rounded to `int`.
 
+The nearest-rank-method is NOT defined for P=0. Please use P between (0,100] 
+
+
