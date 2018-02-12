@@ -106,7 +106,7 @@ def main(argv):
   
     with open(ITCONTFILE) as f:
         REPEAT_DONOR_DICT={}
-        CMTE_ID_ZIP_DICT={}
+        NAME_ZIP_to_YEAR_COUNT={}
         for line in f:
             row = line.rstrip('\n')
             row = row.split('|')
@@ -142,29 +142,29 @@ def main(argv):
             TRANSACTION_DT=int(row[COLNAMES['TRANSACTION_DT']][4:10])
             TRANSACTION_AMT=float(row[COLNAMES['TRANSACTION_AMT']])
             
-            key=(NAME,ZIP_CODE)
-            if key in CMTE_ID_ZIP_DICT:    
-                CMTE_ID_ZIP_DICT[key][1]=CMTE_ID_ZIP_DICT[key][1]+1
+            NAME_ZIP_CODE_KEY=(NAME,ZIP_CODE)
+            if NAME_ZIP_CODE_KEY in NAME_ZIP_to_YEAR_COUNT:    
+                NAME_ZIP_to_YEAR_COUNT[NAME_ZIP_CODE_KEY][1]=NAME_ZIP_to_YEAR_COUNT[NAME_ZIP_CODE_KEY][1]+1
                 ##Out-of-order case
-                if (TRANSACTION_DT<CMTE_ID_ZIP_DICT[key][0]):
-                    CMTE_ID_ZIP_DICT[key]=[TRANSACTION_DT,1]
+                if (TRANSACTION_DT<NAME_ZIP_to_YEAR_COUNT[NAME_ZIP_CODE_KEY][0]):
+                    NAME_ZIP_to_YEAR_COUNT[NAME_ZIP_CODE_KEY]=[TRANSACTION_DT,1]
 
-                if (CMTE_ID_ZIP_DICT[key][1]>1):
-                    key2=(CMTE_ID,ZIP_CODE)
-                    if key2 in REPEAT_DONOR_DICT:
-                        REPEAT_DONOR_DICT[key2][6]=REPEAT_DONOR_DICT[key2][6]+TRANSACTION_AMT
-                        perc=round(REPEAT_DONOR_DICT[key2][3].updateheaps(TRANSACTION_AMT))
-                        REPEAT_DONOR_DICT[key2][5]=REPEAT_DONOR_DICT[key2][5]+1
-                        dictprinter(FILE_OBJ_REPEAT_DONORS,REPEAT_DONOR_DICT[key2])                               
+                if (NAME_ZIP_to_YEAR_COUNT[NAME_ZIP_CODE_KEY][1]>1):
+                    CMTE_ID_ZIP_CODE_KEY=(CMTE_ID,ZIP_CODE)
+                    if CMTE_ID_ZIP_CODE_KEY in REPEAT_DONOR_DICT:
+                        REPEAT_DONOR_DICT[CMTE_ID_ZIP_CODE_KEY][6]=REPEAT_DONOR_DICT[CMTE_ID_ZIP_CODE_KEY][6]+TRANSACTION_AMT
+                        perc=round(REPEAT_DONOR_DICT[CMTE_ID_ZIP_CODE_KEY][3].updateheaps(TRANSACTION_AMT))
+                        REPEAT_DONOR_DICT[CMTE_ID_ZIP_CODE_KEY][5]=REPEAT_DONOR_DICT[CMTE_ID_ZIP_CODE_KEY][5]+1
+                        dictprinter(FILE_OBJ_REPEAT_DONORS,REPEAT_DONOR_DICT[CMTE_ID_ZIP_CODE_KEY])                               
                     else:
                         x = Percentile(PERCENTILE)
                         perc=x.updateheaps(TRANSACTION_AMT)
                         runnumtotal=1
                         runamttotal=TRANSACTION_AMT;
-                        REPEAT_DONOR_DICT[key2]=[CMTE_ID,ZIP_CODE,TRANSACTION_DT,x,perc,runnumtotal,runamttotal]
-                        dictprinter(FILE_OBJ_REPEAT_DONORS,REPEAT_DONOR_DICT[key2])
+                        REPEAT_DONOR_DICT[CMTE_ID_ZIP_CODE_KEY]=[CMTE_ID,ZIP_CODE,TRANSACTION_DT,x,perc,runnumtotal,runamttotal]
+                        dictprinter(FILE_OBJ_REPEAT_DONORS,REPEAT_DONOR_DICT[CMTE_ID_ZIP_CODE_KEY])
             else:
-                CMTE_ID_ZIP_DICT[key]=[TRANSACTION_DT,1]
+                NAME_ZIP_to_YEAR_COUNT[NAME_ZIP_CODE_KEY]=[TRANSACTION_DT,1]
                     
     FILE_OBJ_REPEAT_DONORS.close()
     pass
