@@ -17,11 +17,13 @@ contributions received and donation amount in a given percentile.
 Big data processing requires close attention to runtime and how data is stored
 and processed. Although a naive implementation of
 [percentile](https://en.wikipedia.org/wiki/Percentile) is fairly easy to
-implement; **a special algorithm for percentile (using two Heap Queues)** was 
-developed for calculating fast percentiles and is the main highlight of my implementation.
+implement; **a special algorithm for percentile (using two Heap Queues)** was
+developed for calculating fast percentiles and is the main highlight of my
+implementation.
 
-The program can process a 1.2G `itcont.txt` file in about 2.5 min on an Intel(R)
-Core(TM)2 Duo CPU E8135 (year:2009) processor. It uses about 450 MB of main memory.
+The program can process a 1.2G `itcont.txt` file in about 2.5 min on an
+Intel(R) Core(TM)2 Duo CPU E8135 (year:2009) processor. It uses about 450 MB of
+main memory.
 
 ### Run instructions
 Download the application from github. Follow these steps to run the application:
@@ -69,9 +71,9 @@ SUCESS:Percentile Match. Dual-Heap-Percentile implementation is 3.19 times faste
 #### Description of tests:
 - **test_1**: This is the default test provided to us.
 - **test_2**: This test has been provided to evaluate correct results for CMTE_ID=C00640623 & ZIP_CODE=35043.
-- **test_3**: This test has been provided to take care of out-of-order streams as explained in the FAQ section
-- **test_4**: This test has been provided to highlight how the code checks and skips malformed data
-- **UNIT TEST#1**: This a test that highlights the accuracy/performance of **Dual Heap Percentile Implementation** vs. **Naive Percentile Implementation**
+- **test_3**: This test has been provided to take care of out-of-order streams as explained in the FAQ section.
+- **test_4**: This test has been provided to highlight how the code checks and skips malformed data.
+- **UNIT TEST#1**: This a test that highlights the accuracy/performance of **Dual Heap Percentile Implementation** vs. **Naive Percentile Implementation**.
 
 
 ### Algorithm and Data Structure
@@ -94,11 +96,11 @@ SUCESS:Percentile Match. Dual-Heap-Percentile implementation is 3.19 times faste
      (NAME,ZIP_CODE):[YEAR,count=1]                          	(NAME,ZIP_CODE):[YEAR,count+=1]
                                                                     This is a repeat donor
                                                                             |
-                                                      Is  (CMTE_ID,ZIP_CODE) key present in RepeatDonorHastable ?
+                                                      Is  (CMTE_ID,ZIP_CODE) key present in RepeatDonorDictionary ?
                          |----------------------------------------------------------------| 
 	              (if no)							       (if yes)
-          Create entry in RepeatDonorHastable with                           Update entry in RepeatDonorHastable with
-    	(CMTE_ID,ZIP_CODE):[update Percentile object,       	           (CMTE_ID,ZIP_CODE):[update Percentile object,
+          Create entry in RepeatDonorDictionary with                           Update entry in RepeatDonorDictionary with
+    	(CMTE_ID,ZIP_CODE):[update Percentile object,       	              (CMTE_ID,ZIP_CODE):[update Percentile object,
 find new percentile and update running donation total and counts]    find new percentile and update running donation total and counts]
 ```
 #### Data Structure
@@ -106,9 +108,15 @@ We use two dictionaries and a Percentile object which comprises of two
 [heap data strucures](https://en.wikipedia.org/wiki/Heap_(data_structure)).
 
 ##### Dictionaries
-The first dictionary (referred to as Dictionary#1 above) uses (NAME,ZIP_CODE) as key 
-and the second dictionary uses (CMTE_ID,ZIP_CODE) as key.Dictionary is a good data 
-structure to use because key search is of O(1) complexity.
+The first dictionary (referred to as `Dictionary#1` above and
+`NAME_ZIP_to_YEAR_COUNT` in code) uses (NAME,ZIP_CODE) as key and stores
+[YEAR,count] as its values.
+ 
+The second dictionary (referred to as `RepeatDonorDictionary` and
+`REPEAT_DONOR_DICT` in code ) uses (CMTE_ID,ZIP_CODE) as key nd stores
+[CMTE_ID,ZIP_CODE,TRANSACTION_DT,Percentile-Object,Percentile,Running
+Count,Running Total Amount] as its values.  Dictionary is a good data structure
+to use because key search is of O(1) complexity.
 
 #####  Percentile Object
 We create two heaps `MinHeap` and `MaxHeap`. Let's say we are evaluating for 30
@@ -118,19 +126,20 @@ percentile value.  Now we insert values according to the size of the heap for
 that iteration.
 
 It takes good advantage of ordered data required for percentile calculation.
-The fact that heap has O(1) complexity to `find-min-value` operation and O(log n)
-complexity for `insert` operation. `Heapq` module in python is an implementation
-of `MinHeap`. To implement `MaxHeap` I made the value of keys negative.
+The fact that heap has O(1) complexity to `find-min-value` operation and O(log
+n) complexity for `insert` operation. `Heapq` module in python is an
+implementation of `MinHeap`. To implement `MaxHeap` I made the value of keys
+negative.
 
 ## Code Dependencies and Comments
-- The code was tested in `Python 2.7.10`. Although I haven't tested it, I expect
-that the code should work with `Python 2.7.x`.  The code has not been tested
-for `Python 3`. The code should work with baseline python installation.
+- The code was tested in `Python 2.7.10`. Although I haven't tested it, I
+  expect that the code should work with `Python 2.7.x`.  The code has not been
+tested for `Python 3`. The code should work with baseline python installation.
 - The code uses the following modules: `sys`, `os.path`, `heapq` & `math`
-- I have used calendar years instead of dates in the entire program.
-All output donation values have been rounded to `int`.
-- The nearest-rank-method is NOT defined for Percentile=0. Please use Percentile
- between (0,100] 
-- Although the fast-percentile-algorithm was exhaustively tested with 1000s of random 
-data and has been shown as part of my tests; I should have used `unittest` module for 
-more formal testing.
+- I have used calendar years instead of dates in the entire program.  All
+  output donation values have been rounded to `int`.
+- The nearest-rank-method is NOT defined for Percentile=0. Please use
+  Percentile between (0,100] 
+- Although the fast-percentile-algorithm was exhaustively tested with 1000s of
+  random data and has been shown as part of my tests; I should have used
+`unittest` module for more formal testing.

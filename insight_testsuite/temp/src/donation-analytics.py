@@ -127,8 +127,11 @@ def main(argv):
             exit(1)
   
     with open(ITCONTFILE) as f:
-        REPEAT_DONOR_DICT={} ## REPEAT DONOR dictionary
-        NAME_ZIP_to_YEAR_COUNT={} #NAME and ZIP code dictionary used to identify donor.
+        ## REPEAT DONOR dictionary. Referred to as Dictionary#1 in README
+        REPEAT_DONOR_DICT={} 
+        
+        #NAME and ZIP code dictionary used to identify donor.Referred to as RepeatDonorDictionary in README
+        NAME_ZIP_to_YEAR_COUNT={}
         for line in f:
             row = line.rstrip('\n')
             row = row.split('|')
