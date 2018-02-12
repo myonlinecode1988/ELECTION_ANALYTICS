@@ -52,15 +52,15 @@ The output should look similar to this:
 [PASS]: test_4 repeat_donors.txt
 [Mon Feb 12 11:04:19 EST 2018] 4 of 4 tests passed
 [UNIT TEST#1: Comparing Speed & Accuracy: Naive-Nearest-Rank-Percentile-Method vs. Dual-Heap-Nearest-Rank-Percentile-Method Implementations for 10 Random Seeds]
-SUCESS:Percentile Match. Dual-Heap-Percentile implementation is 3.47 times faster than naive implemntation
-SUCESS:Percentile Match. Dual-Heap-Percentile implementation is 3.45 times faster than naive implemntation
-SUCESS:Percentile Match. Dual-Heap-Percentile implementation is 3.2 times faster than naive implemntation
-SUCESS:Percentile Match. Dual-Heap-Percentile implementation is 3.13 times faster than naive implemntation
-SUCESS:Percentile Match. Dual-Heap-Percentile implementation is 3.08 times faster than naive implemntation
-SUCESS:Percentile Match. Dual-Heap-Percentile implementation is 3.21 times faster than naive implemntation
-SUCESS:Percentile Match. Dual-Heap-Percentile implementation is 3.1 times faster than naive implemntation
-SUCESS:Percentile Match. Dual-Heap-Percentile implementation is 3.05 times faster than naive implemntation
-SUCESS:Percentile Match. Dual-Heap-Percentile implementation is 3.12 times faster than naive implemntation
+SUCESS:Percentile Match. Dual-Heap-Percentile implementation is 3.47 times faster than naive implementation
+SUCESS:Percentile Match. Dual-Heap-Percentile implementation is 3.45 times faster than naive implementation
+SUCESS:Percentile Match. Dual-Heap-Percentile implementation is 3.2 times faster than naive implementation
+SUCESS:Percentile Match. Dual-Heap-Percentile implementation is 3.13 times faster than naive implementation
+SUCESS:Percentile Match. Dual-Heap-Percentile implementation is 3.08 times faster than naive implementation
+SUCESS:Percentile Match. Dual-Heap-Percentile implementation is 3.21 times faster than naive implementation
+SUCESS:Percentile Match. Dual-Heap-Percentile implementation is 3.1 times faster than naive implementation
+SUCESS:Percentile Match. Dual-Heap-Percentile implementation is 3.05 times faster than naive implementation
+SUCESS:Percentile Match. Dual-Heap-Percentile implementation is 3.12 times faster than naive implementation
 SUCESS:Percentile Match. Dual-Heap-Percentile implementation is 3.19 times faster than naive implementation
 ````
 

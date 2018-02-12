@@ -91,7 +91,7 @@ for sim in range(0,10):
     	print "ERROR:UNIT TEST FAILED.Percentile not evaluated correctly"
         break;
     else:
-        print "SUCESS:Percentile Match. Dual-Heap-Percentile implementation is" ,round(duration_percenttile2/duration_percenttile1,2),"times faster than naive implemntation" 
+        print "SUCESS:Percentile Match. Dual-Heap-Percentile implementation is" ,round(duration_percenttile2/duration_percenttile1,2),"times faster than naive implementation" 
         
 
     
