@@ -15,7 +15,7 @@ identify repeat donors and report total dollars received, the total number of
 contributions received and donation amount in a given percentile.
 
 Big data processing requires close attention to runtime and how data is stored
-and processed and although a naive implementation of
+and processed. Although a naive implementation of
 [**percentile**](https://en.wikipedia.org/wiki/Percentile) is fairly easy to
 implement; a special algorithm (which uses two Heap Queues) was developed for
 calculating fast percentiles and is the main highlight of my implementation.
@@ -31,12 +31,12 @@ $ cd ELECTION_ANALYTICS
 $ chmod +x run.sh
 $ ./run.sh
 ```
-If you want to run your own input data set you can do so by editing `run.sh` as
+If you want to run your own input data set; you can do so by editing `run.sh` as
 show below:
 ```
 #!/bin/bash
 #
-python ./src/donation-analytics.py ./<your-path>/itcont.txt ./<your-path>/percentile.txt ./output/repeat_donors.txt
+python ./src/donation-analytics.py ./<YOUR-PATH>/itcont.txt ./<YOUR-PATH>/percentile.txt ./output/repeat_donors.txt
 ```
 ### Testing
 We have included a 4 new tests highlighting accuracy and speed of our code and algorithm.
@@ -65,35 +65,37 @@ SUCESS:Percentile Match. Dual-Heap-Percentile implementation is 3.05 times faste
 SUCESS:Percentile Match. Dual-Heap-Percentile implementation is 3.12 times faster than naive implementation
 SUCESS:Percentile Match. Dual-Heap-Percentile implementation is 3.19 times faster than naive implementation
 ````
-Description of tests:
+#### Description of tests:
 - **test_1**: This is the default test provided to us.
 - **test_2**: This test has been provided to evaluate correct results for CMTE_ID=C00640623 & ZIP_CODE=35043.
 - **test_3**: This test has been provided to take care of out-of-order streams as explained in the FAQ section
 - **test_4**: This test has been provided to highlight how the code checks and skips malformed data
-- **UNIT TEST#1**: This a test that highlights the accuracy/performance  of DUAL-HEAP-PERCENTILE-IMPLEMNTATION with NAIVE-PERCENTILE-IMPLEMENTATION
+- **UNIT TEST#1**: This a test that highlights the accuracy/performance of **Dual Heap Percentile Implementation** vs. **Naive Percentile Implementation**
 
 
 ### Algorithm and Data Structure
 
+
                          Read rows, check input data sanity
                                         |
-                    Use  (NAME, ZIP_CODE) as a key in Hashtable
-                        to store DONOR info (YEAR, COUNT)
+                    Use  (NAME, ZIP_CODE) as a key in Hashtable#1
+                        and store donor info (YEAR, COUNT)
                                         |
-                    Reset repeat donor to current donor entry
+                    Reset repeat donor info to current donor entry
                         if out-of-order calendar year appears
                                         |
-                    if (NAME,ZIP_CODE) is present we identify
-                        repeat donors and have a new Hash
-                        Table with (CMTE_ID,ZIP_CODE) as
-                        key to store relevant information.
-                        We also create a Percentile Object
-                        that stores the data and returns the
-                        percentile value. The Percentile
-                        object gets updated everytime the key
-                                    is accessed.
+                    Is (NAME,ZIP_CODE) key present in Hashtable#1 ?
                                         |
-                    The output is written in repeat_donors.txt
+            |----------------------------------------------------------------|
+    Create a new entry in Hashtable#1                            Update count in Hashtable#1
+     (NAME,ZIP_CODE):[YEAR,count=1]                          	(NAME,ZIP_CODE):[YEAR,count+=1]
+                                                                    This is a repeat donor
+                                                                            |
+                                                      Is  (CMTE_ID,ZIP_CODE) key present in RepeatDonorHastable ?
+                         |----------------------------------------------------------------| 
+          Create entry in RepeatDonorHastable with                                        Update entry in  RepeatDonorHastable with
+    	(CMTE_ID,ZIP_CODE):[update Percentile object,       				(CMTE_ID,ZIP_CODE):[update Percentile object,
+find new percentile and update running donation total and counts]		find new percentile and update running donation total and counts]
 
 ####  Percentile Object
 We create two heaps `MinHeap` and `MaxHeap`. Let's say we are evaluating for 30
