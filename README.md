@@ -39,6 +39,7 @@ python ./src/donation-analytics.py ./<your-path>/itcont.txt ./<your-path>/percen
 ```
 ### Testing
 We have included a 4 new tests highlighting accuracy and speed of our code and algorithm.
+To run the tests follow these steps:
 ```
     $ cd insight_testsuite/
     insight_testsuite~$ chmod +x run_tests.sh
@@ -63,6 +64,13 @@ SUCESS:Percentile Match. Dual-Heap-Percentile implementation is 3.05 times faste
 SUCESS:Percentile Match. Dual-Heap-Percentile implementation is 3.12 times faster than naive implementation
 SUCESS:Percentile Match. Dual-Heap-Percentile implementation is 3.19 times faster than naive implementation
 ````
+Description of tests:
+- **test_1**: This is the default test provided to us.
+- **test_2**: This test has been provided to evaluate correct results for CMTE_ID=C00640623 & ZIP_CODE=35043.
+- **test_3**: This test has been provided to take care of out-of-order streams as explained in the FAQ section
+- **test_4**: This test has been provided to highlight how the code checks and skips malformed data
+- **UNIT TEST#1**: This a test that highlights the accuracy/performance  of DUAL-HEAP-PERCENTILE-IMPLEMNTATION with NAIVE-PERCENTILE-IMPLEMENTATION
+
 
 ### Algorithm and Data Structure
 
@@ -99,16 +107,13 @@ complexity for `insert` operation. `Heapq` module in python is an implementation
 of `MinHeap`. To implement `MaxHeap` I made the value of keys negative.
 
 ## Assumptions and Comments
-The code was tested in `Python 2.7.10`. Although I haven't tested it, I expect
+- The code was tested in `Python 2.7.10`. Although I haven't tested it, I expect
 that the code should work with `Python 2.7.x`.  The code has not been tested
 for `Python 3`.
-
-I have used calendar years instead of dates in the entire program.
+- I have used calendar years instead of dates in the entire program.
 All output donation values have been rounded to `int`.
-
-The nearest-rank-method is NOT defined for Percentile=0. Please use Percentile
+- The nearest-rank-method is NOT defined for Percentile=0. Please use Percentile
  between (0,100] 
-
-Although the fast-percentile-algorithm was exhaustively tested with 1000s of random 
+- Although the fast-percentile-algorithm was exhaustively tested with 1000s of random 
 data and has been shown as part of my tests; I should have used `unittest` module for 
 more formal testing.
