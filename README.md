@@ -100,11 +100,12 @@ SUCESS:Percentile Match. Dual-Heap-Percentile implementation is 3.19 times faste
 find new percentile and update running donation total and counts]    find new percentile and update running donation total and counts]
 ```
 #### Data Structure
+##### Dictionaries
 We use two dictionaries and a Percentile object which comprises of two [heap data strucures](https://en.wikipedia.org/wiki/Heap_(data_structure)).
 The first dictionary (referred to as Dictionary#1 above) uses (NAME,ZIP_CODE) as key and the second dictionary uses (CMTE_ID,ZIP_CODE) as key.
 Dictionary is a good data structure to use because key search is of O(1) complexity.
 
-####  Percentile Object
+#####  Percentile Object
 We create two heaps `MinHeap` and `MaxHeap`. Let's say we are evaluating for 30
 percentile.  `MaxHeap` would contain elements smaller than or equal to 30
 percentile value.  `MinHeap` would contain all the elements greater than 30
