@@ -1,17 +1,16 @@
 # Arnab Sarkar's implementation of [Insight 2018 challenge](https://github.com/InsightDataScience/donation-analytics)
 
-### 1. Contents
+## Contents
 
-- [Introduction](README.md#introduction)
-- [Run instructions](README.md#run-instructions)
-- [Testing](README.md#testing)
-- [Example](README.md#example)
-- [Features](README.md#features)
-- [Algortihm and Data Structure](README.md#algortihm-and-data-structure)
-- [Assumptions and Comments](README.md#assumptions-and-comments)
+1. [Introduction](README.md#introduction)
+2. [Run instructions](README.md#run-instructions)
+3. [Testing](README.md#testing)
+4. [Example](README.md#example)
+5. [Algorithm and Data Structure](README.md#algorithm-and-data-structure)
+6. [Assumptions and Comments](README.md#assumptions-and-comments)
 
 
-### 2. Introduction
+### Introduction
 The aim of the project is to process a stream data of campaign contributions,
 identify repeat donors and report total dollars received, the total number of
 contributions received and donation amount in a given percentile.
@@ -25,7 +24,7 @@ calculating fast percentiles and is the main highlight of my implementation.
 The program can process a 1.2G `itcont.txt` file in about 2.5 min on an Intel(R)
 Core(TM)2 Duo CPU E8135 (year:2009) processor.
 
-### 3. Run instructions
+### Run instructions
 Download the application from github. You can run the application in the root
 folder by:
 ```
@@ -39,7 +38,7 @@ show below:
 #
 python ./src/donation-analytics.py ./<your-path>/itcont.txt ./<your-path>/percentile.txt ./output/repeat_donors.txt
 ```
-### 4. Testing
+### Testing
 We have included a 4 new tests highlighting accuracy and speed of our code and algorithm.
 ```
     $ cd insight_testsuite/
@@ -66,7 +65,7 @@ SUCESS:Percentile Match. Dual-Heap-Percentile implementation is 3.12 times faste
 SUCESS:Percentile Match. Dual-Heap-Percentile implementation is 3.19 times faster than naive implementation
 ````
 
-### 5. Algortihm and Data Structure
+### Algortihm and Data Structure
 
                          Read rows, check input data sanity
                                         |
@@ -88,7 +87,7 @@ SUCESS:Percentile Match. Dual-Heap-Percentile implementation is 3.19 times faste
                                         |
                     The output is written in repeat_donors.txt
 
-#####  5.1 Percentile Object
+####  Percentile Object
 We create two heaps `MinHeap` and `MaxHeap`. Let's say we are evaluating for 30
 percentile.  `MaxHeap` would contain elements smaller than or equal to 30
 percentile value.  `MinHeap` would contain all the elements greater than 30
