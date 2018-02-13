@@ -28,7 +28,7 @@ main memory.
 ### Run instructions
 Download the application from github. Follow these steps to run the application:
 ```
-$ git clone https://github.com/myonlinecode1988/ELECTION_ANALYTICS
+$ git clone https://github.com/myonlinecode1988/ELECTION_ANALYTICS.git
 $ cd ELECTION_ANALYTICS
 $ chmod +x run.sh
 $ ./run.sh
