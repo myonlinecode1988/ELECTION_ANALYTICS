@@ -5,8 +5,8 @@
 1. [Introduction](README.md#introduction)
 2. [Run instructions](README.md#run-instructions)
 3. [Testing](README.md#testing)
-4. [Algorithm & Data Structure](README.md#algorithm-&-data-structure)
-5. [Code Dependencies & Comments](README.md#code-dependencies-&-comments)
+4. [Algorithm and Data Structure](README.md#algorithm-and-data-structure)
+5. [Code Dependencies and Comments](README.md#code-dependencies-and-comments)
 
 
 ### Introduction
@@ -76,7 +76,7 @@ SUCESS:Percentile Match. Dual-Heap-Percentile implementation is 3.19 times faste
 - **UNIT TEST#1**: This a test that highlights the accuracy/performance of **Dual Heap Percentile Implementation** vs. **Naive Percentile Implementation**.
 
 
-### Algorithm & Data Structure
+### Algorithm and Data Structure
 
 #### Algorithm
 ```
@@ -131,7 +131,7 @@ n) complexity for `insert` operation. `Heapq` module in python is an
 implementation of `MinHeap`. To implement `MaxHeap` I made the value of keys
 negative.
 
-## Code Dependencies & Comments
+## Code Dependencies and Comments
 - The code was tested in `Python 2.7.10`. Although I haven't tested it, I
   expect that the code should work with `Python 2.7.x`.  The code has not been
 tested for `Python 3`. The code should work with baseline python installation.
