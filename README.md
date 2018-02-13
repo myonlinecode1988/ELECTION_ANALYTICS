@@ -96,11 +96,11 @@ SUCESS:Percentile Match. Dual-Heap-Percentile implementation is 3.19 times faste
      (NAME,ZIP_CODE):[YEAR,count=1]                          	(NAME,ZIP_CODE):[YEAR,count+=1]
                                                                     This is a repeat donor
                                                                             |
-                                                      Is  (CMTE_ID,ZIP_CODE) key present in RepeatDonorDictionary ?
+                                                      Is  (CMTE_ID,ZIP_CODE,YEAR) key present in RepeatDonorDictionary ?
                          |----------------------------------------------------------------| 
 	              (if no)							       (if yes)
           Create entry in RepeatDonorDictionary with                           Update entry in RepeatDonorDictionary with
-    	(CMTE_ID,ZIP_CODE):[update Percentile object,       	              (CMTE_ID,ZIP_CODE):[update Percentile object,
+    	(CMTE_ID,ZIP_CODE,YEAR):[update Percentile object,       	            (CMTE_ID,ZIP_CODE,YEAR):[update Percentile object,
 find new percentile and update running donation total and counts]    find new percentile and update running donation total and counts]
 ```
 #### Data Structure
@@ -113,7 +113,7 @@ The first dictionary (referred to as `Dictionary#1` above &
 `[YEAR,count]` as its values.
  
 The second dictionary (referred to as `RepeatDonorDictionary` above &
-`REPEAT_DONOR_DICT` in code ) uses `(CMTE_ID,ZIP_CODE)` as key & stores
+`REPEAT_DONOR_DICT` in code ) uses `(CMTE_ID,ZIP_CODE,YEAR)` as key & stores
 `[CMTE_ID,ZIP_CODE,TRANSACTION_DT,Percentile-Object,Percentile,Running
 Count,Running Total Amount]` as its values. Dictionary is a good data structure
 to use because key search is of O(1) complexity.
