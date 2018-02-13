@@ -125,8 +125,8 @@ percentile value.  `MinHeap` would contain all the elements greater than 30
 percentile value.  Now we insert values according to the size of the heap for
 that iteration.
 
-It takes good advantage of ordered data required for percentile calculation.
-The fact that heap has O(1) complexity to `find-min-value` operation & O(log
+It takes good advantage of ordered data required for percentile calculation and 
+the fact that heap has O(1) complexity to `find-min-value` operation & O(log
 n) complexity for `insert` operation. `Heapq` module in python is an
 implementation of `MinHeap`. To implement `MaxHeap` I made the value of keys
 negative.
