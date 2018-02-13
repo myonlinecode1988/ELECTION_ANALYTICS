@@ -88,7 +88,7 @@ SUCESS:Percentile Match. Dual-Heap-Percentile implementation is 3.19 times faste
                     Reset repeat donor info to current donor entry
                         if out-of-order calendar year appears
                                         |
-                    Is (NAME,ZIP_CODE) key present in Dictionary#1 ?
+                    Is (NAME, ZIP_CODE) key present in Dictionary#1 ?
                                         |
             |----------------------------------------------------------------|
 	 (if no)							 (if yes)
@@ -115,14 +115,14 @@ The first dictionary (referred to as `Dictionary#1` above &
 The second dictionary (referred to as `RepeatDonorDictionary` above &
 `REPEAT_DONOR_DICT` in code ) uses `(CMTE_ID,ZIP_CODE)` as key & stores
 `[CMTE_ID,ZIP_CODE,TRANSACTION_DT,Percentile-Object,Percentile,Running
-Count,Running Total Amount]` as its values.  Dictionary is a good data structure
+Count,Running Total Amount]` as its values. Dictionary is a good data structure
 to use because key search is of O(1) complexity.
 
 #####  Percentile Object
 We create two heaps `MinHeap` & `MaxHeap`. Let's say we are evaluating for 30
-percentile.  `MaxHeap` would contain elements smaller than or equal to 30
-percentile value.  `MinHeap` would contain all the elements greater than 30
-percentile value.  Now we insert values according to the size of the heap for
+percentile. `MaxHeap` would contain elements smaller than or equal to 30
+percentile value. `MinHeap` would contain all the elements greater than 30
+percentile value. Now we insert values according to the size of the heap for
 that iteration.
 
 It takes good advantage of ordered data required for percentile calculation and 
@@ -133,14 +133,14 @@ negative.
 
 ## Code Dependencies and Comments
 - The code was tested in `Python 2.7.10`. Although I haven't tested it in other
-  versions, I expect the to  work with `Python 2.7.x`.  The code has not been
+  versions, I expect the code to work with `Python 2.7.x`. The code has not been
 tested for `Python 3`.
 - The code should work with baseline python installation.The code uses the
-  following modules: `sys`, `os.path`, `heapq` & `math`
-- I have used calendar years instead of dates in the entire program.  All
+  following modules: `sys`, `os.path`, `heapq` & `math`.
+- I have used calendar years instead of dates in the entire program. All
   output donation values have been rounded to `int`.
 - The nearest-rank-method is NOT defined for Percentile=0. Please use
-  Percentile between (0,100]
+  Percentile between (0,100].
 - Although the fast-percentile-algorithm was exhaustively tested with 1000s of
   random data and has been shown as part of my tests; I should have used
 `unittest` module for more formal testing.
