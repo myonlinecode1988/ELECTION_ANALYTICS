@@ -185,6 +185,8 @@ def main(argv):
 
                 #If NAME and ZIP_CODE key has appeared earlier we have detected a repeat donor 
                 if (NAME_ZIP_to_YEAR_COUNT[NAME_ZIP_CODE_KEY][1]>1):
+                    
+                    #Create new key with CMTE_ID,ZIP_CODE,YEAR
                     CMTE_ID_ZIP_CODE_KEY=(CMTE_ID,ZIP_CODE,TRANSACTION_DT)
                     
                     #Search based on CMTE_D and ZIP_CODE in REPEAT DONOR dictionary
