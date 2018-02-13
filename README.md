@@ -73,7 +73,7 @@ SUCESS:Percentile Match. Dual-Heap-Percentile implementation is 3.19 times faste
 - **test_2**: This test has been provided to evaluate correct results for CMTE_ID=C00640623 & ZIP_CODE=35043.
 - **test_3**: This test has been provided to take care of out-of-order streams as explained in the FAQ section.
 - **test_4**: This test has been provided to highlight how the code checks & skips malformed data.
-- **UNIT TEST#1**: This a test that highlights the accuracy/performance of **Dual Heap Percentile Implementation** vs. **Naive Percentile Implementation**.
+- **UNIT TEST#1**: This a test that highlights the accuracy/performance of `Dual Heap Percentile Implementation` vs. `Naive Percentile Implementation`.
 
 
 ### Algorithm and Data Structure
@@ -128,18 +128,19 @@ that iteration.
 It takes good advantage of ordered data required for percentile calculation and 
 the fact that heap has O(1) complexity to `find-min-value` operation & O(log
 n) complexity for `insert` operation. `Heapq` module in python is an
-implementation of `MinHeap`. To implement `MaxHeap` I made the value of keys
+implementation of `MinHeap`. To implement `MaxHeap`, I made the value of keys
 negative.
 
 ## Code Dependencies and Comments
-- The code was tested in `Python 2.7.10`. Although I haven't tested it, I
-  expect that the code should work with `Python 2.7.x`.  The code has not been
-tested for `Python 3`. The code should work with baseline python installation.
-- The code uses the following modules: `sys`, `os.path`, `heapq` & `math`
+- The code was tested in `Python 2.7.10`. Although I haven't tested it in other
+  versions, I expect the to  work with `Python 2.7.x`.  The code has not been
+tested for `Python 3`.
+- The code should work with baseline python installation.The code uses the
+  following modules: `sys`, `os.path`, `heapq` & `math`
 - I have used calendar years instead of dates in the entire program.  All
   output donation values have been rounded to `int`.
 - The nearest-rank-method is NOT defined for Percentile=0. Please use
-  Percentile between (0,100] 
+  Percentile between (0,100]
 - Although the fast-percentile-algorithm was exhaustively tested with 1000s of
-  random data & has been shown as part of my tests; I should have used
+  random data and has been shown as part of my tests; I should have used
 `unittest` module for more formal testing.
